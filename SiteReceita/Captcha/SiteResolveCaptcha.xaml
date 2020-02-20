@@ -1,0 +1,307 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SiteResolveCaptcha" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1054,2584" sap2010:WorkflowViewState.IdRef="SiteResolveCaptcha_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SiteResolveCaptcha" sap:VirtualizedContainerService.HintSize="1034,2484" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Default="True" Name="recaptcha" />
+      <Variable x:TypeArguments="x:Boolean" Name="resolvido" />
+      <Variable x:TypeArguments="x:String" Name="campo" />
+      <Variable x:TypeArguments="x:String" Name="classeResolvido" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Emissão'" sap:VirtualizedContainerService.HintSize="992,2392" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="11624b51e2297860857854b9192560b8" Selector="&lt;html app='chrome.exe' title='Emissão de Comprovante de Inscrição e de Situação Cadastral' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="958,2246" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:UiElementExists DisplayName="Element Exists 'DIV  rc-anchor-container'" Exists="[recaptcha]" sap:VirtualizedContainerService.HintSize="916,106" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="117dfb18a47f7eea06c118730ff2436b" Selector="&lt;webctrl name='a-*' tag='IFRAME' /&gt;&lt;webctrl id='rc-anchor-container' tag='DIV' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[recaptcha]" sap:VirtualizedContainerService.HintSize="916,253" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="43ff77bad198c2d4238ddd1d6c8c2902" Selector="&lt;webctrl name='a-*' tag='IFRAME' /&gt;&lt;webctrl idx='1' parentid='recaptcha-anchor' tag='DIV' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:Click.Target>
+                </ui:Click>
+              </If.Then>
+            </If>
+            <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 1 second" Duration="00:00:01" sap:VirtualizedContainerService.HintSize="916,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+              <TextExpression.Namespaces>
+                <sco:Collection x:TypeArguments="x:String">
+                  <x:String>System.Activities</x:String>
+                  <x:String>System.Activities.Statements</x:String>
+                  <x:String>System.Activities.Expressions</x:String>
+                  <x:String>System.Activities.Validation</x:String>
+                  <x:String>System.Activities.XamlIntegration</x:String>
+                  <x:String>Microsoft.VisualBasic.Activities</x:String>
+                  <x:String>System</x:String>
+                  <x:String>System.Collections.Generic</x:String>
+                  <x:String>System.Data</x:String>
+                  <x:String>System.Diagnostics</x:String>
+                  <x:String>System.IO</x:String>
+                  <x:String>System.Linq</x:String>
+                  <x:String>System.Management.Automation</x:String>
+                  <x:String>System.Net.Mail</x:String>
+                  <x:String>System.Xml</x:String>
+                  <x:String>System.Xml.Linq</x:String>
+                  <x:String>UiPath.Library</x:String>
+                  <x:String>System.Windows.Markup</x:String>
+                </sco:Collection>
+              </TextExpression.Namespaces>
+              <TextExpression.References>
+                <sco:Collection x:TypeArguments="AssemblyReference">
+                  <AssemblyReference>System.Activities</AssemblyReference>
+                  <AssemblyReference>mscorlib</AssemblyReference>
+                  <AssemblyReference>System.Data</AssemblyReference>
+                  <AssemblyReference>System</AssemblyReference>
+                  <AssemblyReference>System.Core</AssemblyReference>
+                  <AssemblyReference>System.Management.Automation</AssemblyReference>
+                  <AssemblyReference>System.Xml</AssemblyReference>
+                  <AssemblyReference>System.Xml.Linq</AssemblyReference>
+                  <AssemblyReference>UiPath.Library</AssemblyReference>
+                  <AssemblyReference>PresentationFramework</AssemblyReference>
+                  <AssemblyReference>WindowsBase</AssemblyReference>
+                  <AssemblyReference>PresentationCore</AssemblyReference>
+                  <AssemblyReference>System.Xaml</AssemblyReference>
+                </sco:Collection>
+              </TextExpression.References>
+              <sap2010:WorkflowViewState.ViewStateManager>
+                <sap2010:ViewStateManager>
+                  <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+                </sap2010:ViewStateManager>
+              </sap2010:WorkflowViewState.ViewStateManager>
+            </Delay>
+            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="parentClass" DisplayName="Get Attribute 'DIV'" sap:VirtualizedContainerService.HintSize="916,134" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+              <ui:GetAttribute.Result>
+                <OutArgument x:TypeArguments="x:String">[classeResolvido]</OutArgument>
+              </ui:GetAttribute.Result>
+              <ui:GetAttribute.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="2dd7e422d6b557614b3648f375544549" Selector="&lt;webctrl name='a-*' tag='IFRAME' /&gt;&lt;webctrl parentid='recaptcha-anchor' tag='DIV' class='recaptcha-checkbox-checkmark' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetAttribute.Target>
+            </ui:GetAttribute>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="916,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[classeResolvido]" />
+            <Assign sap:VirtualizedContainerService.HintSize="916,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[resolvido]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[classeResolvido Like "*recaptcha-checkbox-checked*"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="916,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[resolvido.ToString]" />
+            <If Condition="[Not resolvido]" sap:VirtualizedContainerService.HintSize="916,1181" sap2010:WorkflowViewState.IdRef="If_6">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="771,1034" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <DoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="729,942" sap2010:WorkflowViewState.IdRef="DoWhile_6" Condition="[campo = &quot;&quot;]">
+                    <Sequence sap:VirtualizedContainerService.HintSize="683,781" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Boolean" Name="campoExiste" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="641,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Clica no solver" />
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CaptchaClicaSolver workflow" sap:VirtualizedContainerService.HintSize="641,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SiteReceita\Captcha\CaptchaClicaSolver.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                      <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 3 seconds" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="641,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+                        <TextExpression.Namespaces>
+                          <sco:Collection x:TypeArguments="x:String">
+                            <x:String>System.Activities</x:String>
+                            <x:String>System.Activities.Statements</x:String>
+                            <x:String>System.Activities.Expressions</x:String>
+                            <x:String>System.Activities.Validation</x:String>
+                            <x:String>System.Activities.XamlIntegration</x:String>
+                            <x:String>Microsoft.VisualBasic.Activities</x:String>
+                            <x:String>System</x:String>
+                            <x:String>System.Collections.Generic</x:String>
+                            <x:String>System.Data</x:String>
+                            <x:String>System.Diagnostics</x:String>
+                            <x:String>System.IO</x:String>
+                            <x:String>System.Linq</x:String>
+                            <x:String>System.Management.Automation</x:String>
+                            <x:String>System.Net.Mail</x:String>
+                            <x:String>System.Xml</x:String>
+                            <x:String>System.Xml.Linq</x:String>
+                            <x:String>UiPath.Library</x:String>
+                            <x:String>System.Windows.Markup</x:String>
+                          </sco:Collection>
+                        </TextExpression.Namespaces>
+                        <TextExpression.References>
+                          <sco:Collection x:TypeArguments="AssemblyReference">
+                            <AssemblyReference>System.Activities</AssemblyReference>
+                            <AssemblyReference>mscorlib</AssemblyReference>
+                            <AssemblyReference>System.Data</AssemblyReference>
+                            <AssemblyReference>System</AssemblyReference>
+                            <AssemblyReference>System.Core</AssemblyReference>
+                            <AssemblyReference>System.Management.Automation</AssemblyReference>
+                            <AssemblyReference>System.Xml</AssemblyReference>
+                            <AssemblyReference>System.Xml.Linq</AssemblyReference>
+                            <AssemblyReference>UiPath.Library</AssemblyReference>
+                            <AssemblyReference>PresentationFramework</AssemblyReference>
+                            <AssemblyReference>WindowsBase</AssemblyReference>
+                            <AssemblyReference>PresentationCore</AssemblyReference>
+                            <AssemblyReference>System.Xaml</AssemblyReference>
+                          </sco:Collection>
+                        </TextExpression.References>
+                        <sap2010:WorkflowViewState.ViewStateManager>
+                          <sap2010:ViewStateManager>
+                            <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+                          </sap2010:ViewStateManager>
+                        </sap2010:WorkflowViewState.ViewStateManager>
+                      </Delay>
+                      <ui:UiElementExists DisplayName="Element Exists 'INPUT  audio-response'" Exists="[campoExiste]" sap:VirtualizedContainerService.HintSize="641,106" sap2010:WorkflowViewState.IdRef="UiElementExists_15">
+                        <ui:UiElementExists.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="fd97d0a4d729f0bde558e40f305f7246" Selector="&lt;webctrl name='c-*' tag='IFRAME' /&gt;&lt;webctrl id='audio-response' tag='INPUT' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:UiElementExists.Target>
+                      </ui:UiElementExists>
+                      <If Condition="[campoExiste]" sap:VirtualizedContainerService.HintSize="641,253" sap2010:WorkflowViewState.IdRef="If_9">
+                        <If.Then>
+                          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  audio-response'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                            <ui:GetValue.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="1e4f74757592e918601f52de78429dd2" Selector="&lt;webctrl name='c-*' tag='IFRAME' /&gt;&lt;webctrl id='audio-response' tag='INPUT' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:GetValue.Target>
+                            <ui:GetValue.Value>
+                              <OutArgument x:TypeArguments="x:String">[campo]</OutArgument>
+                            </ui:GetValue.Value>
+                          </ui:GetValue>
+                        </If.Then>
+                        <If.Else>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[campo]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">
+                                <Literal x:TypeArguments="x:String" Value="" />
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </DoWhile>
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>
